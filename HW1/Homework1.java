@@ -8,11 +8,14 @@
 package HW1;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Homework1 {
     public static void main(String[] args) {
         
-        int i = (int)(Math.random()*(100-(-100)))+(-100);
+        int i = (int)(Math.random()*(1000-(-1000)))+(-1000);
         System.out.println("вот рандомное число i: " + i);
 
         String temp = Integer.toBinaryString(i);
@@ -30,10 +33,7 @@ public class Homework1 {
         for (int j = 0; j < arrayListDivisible.size(); j++) {
             m1[j] = arrayListDivisible.get(j);
         }
-        System.out.println("вот массив m1: " + Arrays.toString(m1));
-       
         
-
         ArrayList<Integer>arrayListNonDivisible = new ArrayList<>();
         for (int j = Short.MIN_VALUE; j < i; j++) {
             if (j % n != 0) {
@@ -45,6 +45,17 @@ public class Homework1 {
         for (int j = 0; j < arrayListNonDivisible.size(); j++) {
             m2[j] = arrayListNonDivisible.get(j);
         }
-        System.out.println("вот массив m2: " + Arrays.toString(m2));
+        
+        try (FileWriter fw = new FileWriter("file.txt", false)) {
+            fw.write("m1 is here: " + Arrays.toString(m1));
+            fw.append("\n");
+            fw.write("m2 is here: " + Arrays.toString(m2));
+            fw.flush();
+            fw.close();
+        }
+            
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }

@@ -1,9 +1,5 @@
 package HW3;
 
-/*
-
-9.* Напишите программу для копирования одного списка массивов в другой.*/
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ListIterator;
